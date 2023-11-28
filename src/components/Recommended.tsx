@@ -4,6 +4,7 @@ import { MdLocalMovies, MdBookmarkBorder } from "react-icons/md";
 import { PiTelevisionDuotone } from "react-icons/pi";
 import { Skeleton } from "@/components/ui/skeleton";
 import { BsFillBookmarkFill } from "react-icons/bs";
+import Link from "next/link";
 
 interface IRecommended {
   adult: boolean;
@@ -92,12 +93,17 @@ const Recommended = () => {
           data.map((movie) => {
             const movieYear = getMovieYear(movie);
             return (
-              <div
+              <Link
+                href={`movie/${movie.id}`}
                 key={movie.id}
                 className=" h-[250px] rounded-xl shrink-0 relative cursor-pointer"
               >
                 <img
-                  src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
+                  src={`https://image.tmdb.org/t/p/w500/${
+                    movie.backdrop_path
+                      ? movie.backdrop_path
+                      : movie.poster_path
+                  }`}
                   className="object-cover w-full h-[70%] rounded-xl"
                 />
                 <div className="bg-black/40 rounded-full h-[30px] w-[30px] flex items-center justify-center absolute top-[10px] right-[10px]">
@@ -122,7 +128,7 @@ const Recommended = () => {
                   </div>
                   <p className="text-[14px]">{movie.title}</p>
                 </div>
-              </div>
+              </Link>
             );
           })}
     </div>

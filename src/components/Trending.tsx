@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { MdLocalMovies, MdBookmarkBorder } from "react-icons/md";
 import { PiTelevisionDuotone } from "react-icons/pi";
 import { Skeleton } from "@/components/ui/skeleton";
+import Link from "next/link";
 import { BsFillBookmarkFill } from "react-icons/bs";
 
 interface Itrending {
@@ -29,12 +30,13 @@ const Trending = () => {
     const fetchData = async () => {
       try {
         const res = await fetch(
-          "https://api.themoviedb.org/3/trending/all/day?api_key=dd90dd41203fce3517619be87037fc63",
+          "https://api.themoviedb.org/3/trending/movie/day?api_key=dd90dd41203fce3517619be87037fc63",
           { cache: "no-store" }
         );
         const data = await res.json();
         setData(data.results);
         setLoading(false);
+        console.log(data.results);
       } catch (error) {
         console.error("Error fetching data: ", error);
         setLoading(false);
@@ -49,6 +51,10 @@ const Trending = () => {
       ? data.release_date
       : data.first_air_date;
     const year = new Date(releaseDate).getFullYear();
+    if (isNaN(year) || !releaseDate) {
+      return 2023; // Return 2023 for invalid or missing date
+    }
+
     return year;
   };
 
@@ -65,7 +71,8 @@ const Trending = () => {
         data.map((trendData) => {
           const movieYear = getMovieYear(trendData);
           return (
-            <div
+            <Link
+              href={`movie/${trendData.id}`}
               key={trendData.id}
               className="w-[450px] h-[220px] rounded-xl flex-shrink-0 flex flex-col justify-end relative"
               style={{
@@ -104,7 +111,7 @@ const Trending = () => {
                   onClick={() => setIsBookmark(!isBookmark)}
                 />
               </div>
-            </div>
+            </Link>
           );
         })
       )}
