@@ -2,30 +2,64 @@ import { MdLocalMovies } from "react-icons/md";
 import { PiTelevisionDuotone } from "react-icons/pi";
 import { BsFillBookmarkFill } from "react-icons/bs";
 import { BiSolidGridAlt } from "react-icons/bi";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export const sideBarData = [
   {
     id: 1,
     name: "Home",
-    icon: <BiSolidGridAlt className=" text-2xl" />,
+    icon: (
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger>
+            {" "}
+            <BiSolidGridAlt className=" text-2xl" />
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Home</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+    ),
     path: "/home",
   },
   {
     id: 2,
-    name: "Movies",
-    icon: <MdLocalMovies className=" text-2xl" />,
-    path: "/movies",
+    name: "Tv-series",
+    icon: (
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger>
+            <PiTelevisionDuotone className=" text-2xl" />
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Tv Series</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+    ),
+    path: "/series",
   },
   {
     id: 3,
-    name: "Tv-series",
-    icon: <PiTelevisionDuotone className=" text-2xl" />,
-    path: "/tv-series",
-  },
-  {
-    id: 4,
     name: "Bookmarks",
-    icon: <BsFillBookmarkFill className=" text-2xl" />,
+    icon: (
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger>
+            <BsFillBookmarkFill className=" text-2xl" />
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Bookmarks</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+    ),
     path: "/bookmarks",
   },
 ];

@@ -12,14 +12,16 @@ interface IMovie {
   genres: { id: number; name: string }[];
   id: number;
   original_language: string;
-  title: string;
-  original_title: string;
+  name: string;
+  original_name: string;
   overview: string;
   poster_path: string;
-  release_date: string;
+  first_air_date: string;
   runtime: number;
   tagline: string;
   videos: any;
+
+  genre_ids: number[];
 }
 
 interface IVidoes {
@@ -37,7 +39,7 @@ const page = ({ params }: { params: { id: number } }) => {
     const fetchData = async () => {
       try {
         const res = await fetch(
-          `https://api.themoviedb.org/3/movie/${params.id}?api_key=dd90dd41203fce3517619be87037fc63&append_to_response=videos`,
+          `https://api.themoviedb.org/3/tv/${params.id}?api_key=dd90dd41203fce3517619be87037fc63&append_to_response=videos`,
           { cache: "no-store" }
         );
         if (res.ok) {
@@ -58,7 +60,7 @@ const page = ({ params }: { params: { id: number } }) => {
   }, [params.id]);
 
   const formatDate = () => {
-    const dateComponents = data?.release_date.split("-");
+    const dateComponents = data?.first_air_date.split("-");
     if (dateComponents) {
       const year = dateComponents[0];
       const month = dateComponents[1];
@@ -69,18 +71,18 @@ const page = ({ params }: { params: { id: number } }) => {
     }
   };
 
-  const getRuntime = () => {
-    const runtimeInMinutes = data?.runtime;
+  // const getRuntime = () => {
+  //   const runtimeInMinutes = data?.runtime;
 
-    if (runtimeInMinutes) {
-      const hours = Math.floor(runtimeInMinutes / 60);
-      const minutes = runtimeInMinutes % 60;
+  //   if (runtimeInMinutes) {
+  //     const hours = Math.floor(runtimeInMinutes / 60);
+  //     const minutes = runtimeInMinutes % 60;
 
-      const formattedRuntime = `${hours}h ${minutes}m`;
+  //     const formattedRuntime = `${hours}h ${minutes}m`;
 
-      return formattedRuntime;
-    }
-  };
+  //     return formattedRuntime;
+  //   }
+  // };
 
   const playTrailer = () => {
     if (
@@ -175,12 +177,12 @@ const page = ({ params }: { params: { id: number } }) => {
             </div>
             {/* details */}
             <div className="w-[75%] h-[350px]">
-              <h1 className=" text-4xl font-bold font-sans">{data?.title}</h1>
+              <h1 className=" text-4xl font-bold font-sans">{data?.name}</h1>
 
               {/*movie details */}
               <div className="w-full flex flex-col gap-[5px] text-base mt-3 font-poppins">
                 <div className="w-full h-[20px] flex gap-[8px] items-center text-gray-300 text-[12px] pt-2">
-                  <p>{formatDate()}</p>
+                  <p>{data?.first_air_date === "" ? "2023" : formatDate()}</p>
                   <div className="h-1 w-1 bg-gray-300 rounded-full"></div>
                   <div className="flex gap-[2px]">
                     {data?.genres.map((genre, index) => (
@@ -190,8 +192,8 @@ const page = ({ params }: { params: { id: number } }) => {
                       </React.Fragment>
                     ))}
                   </div>
-                  <div className="h-1 w-1 bg-gray-300 rounded-full"></div>
-                  <p>{getRuntime()}</p>
+                  {/* <div className="h-1 w-1 bg-gray-300 rounded-full"></div>
+                  <p>{getRuntime()}</p> */}
                 </div>
               </div>
 
@@ -223,9 +225,9 @@ const page = ({ params }: { params: { id: number } }) => {
             </div>
           </main>
           <h2 className="text-xl mt-[30px] font-poppins">
-            Recommended After Watching {data?.title}
+            Recommended After Watching {data?.name}
           </h2>
-          <Recommended id={params.id} type="movie" />
+          <Recommended id={params.id} type="tv" />
         </>
       )}
     </>

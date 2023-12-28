@@ -10,10 +10,13 @@ interface IMovie {
   id: number;
   original_language: string;
   title: string;
+  name: string;
+  original_name: string;
   original_title: string;
   overview: string;
   poster_path: string;
   release_date: string;
+  first_air_date: string;
   runtime: number;
   tagline: string;
   videos: any;
@@ -26,7 +29,7 @@ interface IVidoes {
 }
 
 const nSkeleton = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }];
-const Recommended = ({ id }: { id: number }) => {
+const Recommended = ({ id, type }: { id: number; type: string }) => {
   const [data, setData] = useState<IMovie[] | []>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [isBookmark, setIsBookmark] = useState<boolean>(false);
@@ -36,7 +39,7 @@ const Recommended = ({ id }: { id: number }) => {
     const fetchData = async () => {
       try {
         const res = await fetch(
-          `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=dd90dd41203fce3517619be87037fc63`,
+          `https://api.themoviedb.org/3/${type}/${id}/recommendations?api_key=dd90dd41203fce3517619be87037fc63`,
           { cache: "no-store" }
         );
         if (res.ok) {
@@ -79,7 +82,11 @@ const Recommended = ({ id }: { id: number }) => {
                 if (movie.poster_path || movie.backdrop_path) {
                   return (
                     <Link
-                      href={`/movie/${movie.id}`}
+                      href={` ${
+                        type === "movie"
+                          ? `/movie/${movie.id}`
+                          : `/tv/${movie.id}`
+                      }`}
                       className="h-[450px] rounded-xl flex flex-col gap-[10px]  cursor-pointer"
                       key={movie.id}
                     >
@@ -93,7 +100,7 @@ const Recommended = ({ id }: { id: number }) => {
                       />
                       <div className="w-full h-[10%]">
                         <p className="text-[14px] font-poppins hover:text-gray-400">
-                          {movie.title}
+                          {movie.title ? movie.title : movie.name}
                         </p>
                       </div>
                     </Link>

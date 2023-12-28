@@ -30,7 +30,7 @@ const Trending = () => {
     const fetchData = async () => {
       try {
         const res = await fetch(
-          "https://api.themoviedb.org/3/trending/movie/day?api_key=dd90dd41203fce3517619be87037fc63",
+          "https://api.themoviedb.org/3/trending/all/day?api_key=dd90dd41203fce3517619be87037fc63",
           { cache: "no-store" }
         );
         const data = await res.json();
@@ -72,7 +72,11 @@ const Trending = () => {
           const movieYear = getMovieYear(trendData);
           return (
             <Link
-              href={`movie/${trendData.id}`}
+              href={` ${
+                trendData.media_type === "movie"
+                  ? `/movie/${trendData.id}`
+                  : `/tv/${trendData.id}`
+              }`}
               key={trendData.id}
               className="w-[450px] h-[220px] rounded-xl flex-shrink-0 flex flex-col justify-end relative"
               style={{

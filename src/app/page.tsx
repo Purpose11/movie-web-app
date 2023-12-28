@@ -1,3 +1,5 @@
 export default function Home() {
-  return <main>login page</main>;
+  return (
+    <main className="w-full h-screen border border-red-500">login page</main>
+  );
 }
