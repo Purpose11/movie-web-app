@@ -71,19 +71,6 @@ const page = ({ params }: { params: { id: number } }) => {
     }
   };
 
-  // const getRuntime = () => {
-  //   const runtimeInMinutes = data?.runtime;
-
-  //   if (runtimeInMinutes) {
-  //     const hours = Math.floor(runtimeInMinutes / 60);
-  //     const minutes = runtimeInMinutes % 60;
-
-  //     const formattedRuntime = `${hours}h ${minutes}m`;
-
-  //     return formattedRuntime;
-  //   }
-  // };
-
   const playTrailer = () => {
     if (
       data &&
@@ -112,7 +99,7 @@ const page = ({ params }: { params: { id: number } }) => {
     } else {
       return (
         <div className="w-full h-[90%] bg-black">
-          <p className=" text-center font-bold text-xl">
+          <p className=" text-center font-bold lg:text-xl text-base">
             No Trailer is available for this movie
           </p>
         </div>
@@ -122,22 +109,22 @@ const page = ({ params }: { params: { id: number } }) => {
   return (
     <>
       {loading ? (
-        <div className="w-full h-[80vh] flex items-center gap-6 px-9">
-          <Skeleton className="w-[250px] h-[400px]  rounded-xl bg-gray-700" />
+        <div className="w-full lg:h-[80vh] h-fit flex items-center flex-col lg:flex-row gap-6 lg:px-9 py-5 lg:py-0 mt-3 lg:mt-0">
+          <Skeleton className="lg:w-[250px] w-[220px]  lg:h-[400px] h-[350px]  rounded-xl bg-gray-700" />
           <div className="w-[75%] h-[350px]">
-            <Skeleton className="w-[50%] h-[36px] bg-gray-700" />
-            <Skeleton className="w-[30%] h-[10px] bg-gray-700 mt-5" />
+            <Skeleton className="w-[50%] lg:h-[36px] h-[24px] bg-gray-700" />
+            <Skeleton className="w-[30%] lg:h-[10px] h-[7px] bg-gray-700 mt-5" />
             <div className="-full flex items-center gap-[20px] text-base mt-3">
-              <Skeleton className="w-[40px] h-[40px] rounded-full bg-gray-700" />
-              <Skeleton className="w-[40px] h-[40px] rounded-full bg-gray-700" />
-              <Skeleton className="w-[150px] h-[30px]  bg-gray-700" />
+              <Skeleton className="lg:w-[40px] w-[30px] lg:h-[40px] h-[30px] rounded-full bg-gray-700" />
+              <Skeleton className="lg:w-[40px] w-[30px] lg:h-[40px] h-[30px]  rounded-full bg-gray-700" />
+              <Skeleton className="w-[150px] lg:h-[30px] h-[20px]  bg-gray-700" />
             </div>
-            <Skeleton className="w-[30%] h-[25px] bg-gray-700 mt-5" />
+            <Skeleton className="w-[30%] lg:h-[25px] h-[17px] bg-gray-700 mt-5" />
             <div className="mt-[30px] flex flex-col gap-4">
-              <Skeleton className="w-[30%] h-[20px] bg-gray-700" />
-              <Skeleton className="w-full h-[10px] bg-gray-700" />
-              <Skeleton className="w-full h-[10px] bg-gray-700" />
-              <Skeleton className="w-full h-[10px] bg-gray-700" />
+              <Skeleton className="w-[30%] lg:h-[20px] h-[10px] bg-gray-700" />
+              <Skeleton className="w-full lg:h-[10px] h-[5px] bg-gray-700" />
+              <Skeleton className="w-full lg:h-[10px] h-[5px] bg-gray-700" />
+              <Skeleton className="w-full lg:h-[10px] h-[5px] bg-gray-700" />
             </div>
           </div>
         </div>
@@ -145,7 +132,7 @@ const page = ({ params }: { params: { id: number } }) => {
         <>
           {" "}
           <main
-            className="w-full h-[80vh] flex items-center gap-6 px-9 relative"
+            className="w-full lg:h-[80vh] h-fit flex items-center flex-col lg:flex-row gap-6 lg:px-9 py-5 lg:py-0 mt-3 lg:mt-0 relative"
             style={{
               backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(https://image.tmdb.org/t/p/w500/${
                 data?.backdrop_path ? data.backdrop_path : data?.poster_path
@@ -158,16 +145,16 @@ const page = ({ params }: { params: { id: number } }) => {
             {isPlayTrailer ? (
               <div className=" w-[100%] h-[100%] flex flex-col absolute top-0 left-0 right-0 bottom-0">
                 <div className=" w-full h-[10%] bg-black flex items-center justify-between text-white px-6 font-semibold">
-                  <h2 className="text-xl">Play Trailer</h2>
+                  <h2 className="lg:text-xl text-base">Play Trailer</h2>
                   <button type="button" onClick={() => setIsPlayTrailer(false)}>
-                    <MdOutlineClose ClassName="s" />
+                    <MdOutlineClose ClassName="lg:text-xl text-base" />
                   </button>
                 </div>
                 {playTrailer()}
               </div>
             ) : null}
 
-            <div className="w-[250px] h-[400px]  rounded-xl">
+            <div className="lg:w-[250px] w-[220px]  lg:h-[400px] h-[350px]  rounded-xl">
               <img
                 src={`https://image.tmdb.org/t/p/w500/${
                   data?.poster_path ? data?.poster_path : data?.backdrop_path
@@ -176,12 +163,14 @@ const page = ({ params }: { params: { id: number } }) => {
               />
             </div>
             {/* details */}
-            <div className="w-[75%] h-[350px]">
-              <h1 className=" text-4xl font-bold font-sans">{data?.name}</h1>
+            <div className="lg:w-[75%] w-[85%] lg:h-[350px] h-fit">
+              <h1 className=" lg:text-4xl text-2xl font-bold font-sans">
+                {data?.name}
+              </h1>
 
               {/*movie details */}
-              <div className="w-full flex flex-col gap-[5px] text-base mt-3 font-poppins">
-                <div className="w-full h-[20px] flex gap-[8px] items-center text-gray-300 text-[12px] pt-2">
+              <div className="w-full flex flex-col gap-[5px] lg:text-base text-sm mt-3 font-poppins">
+                <div className="w-full h-[20px] flex gap-[8px] items-center text-gray-300 lg:text-[12px] text-[10px] lg:pt-2">
                   <p>{data?.first_air_date === "" ? "2023" : formatDate()}</p>
                   <div className="h-1 w-1 bg-gray-300 rounded-full"></div>
                   <div className="flex gap-[2px]">
@@ -192,21 +181,19 @@ const page = ({ params }: { params: { id: number } }) => {
                       </React.Fragment>
                     ))}
                   </div>
-                  {/* <div className="h-1 w-1 bg-gray-300 rounded-full"></div>
-                  <p>{getRuntime()}</p> */}
                 </div>
               </div>
 
               {/*button section */}
               <div className="w-full flex items-center gap-[20px] text-base  mt-3 font-poppins">
-                <div className="w-[40px] h-[40px] rounded-full bg-[#032541] flex justify-center items-center">
-                  <FaBookmark className="text-white flex-shrink-0 h-[12px] w-[12px] cursor-pointer" />
+                <div className="lg:w-[40px] w-[30px] lg:h-[40px] h-[30px] rounded-full bg-[#032541] flex justify-center items-center">
+                  <FaBookmark className="text-white flex-shrink-0 lg:h-[12px] h-[10px] lg:w-[12px] w-[10px] cursor-pointer" />
                 </div>
-                <div className="w-[40px] h-[40px] rounded-full bg-[#032541] flex justify-center items-center">
-                  <FaHeart className="text-white flex-shrink-0 h-[12px] w-[12px] cursor-pointer" />
+                <div className="lg:w-[40px] w-[30px] lg:h-[40px] h-[30px] rounded-full bg-[#032541] flex justify-center items-center">
+                  <FaHeart className="text-white flex-shrink-0 h-[12px] lg:w-[12px] w-[10px] cursor-pointer" />
                 </div>
                 <div
-                  className="flex items-center gap-2 text-white cursor-pointer hover:text-gray-400  text-base font-sans font-semibold"
+                  className="flex items-center gap-2 text-white cursor-pointer hover:text-gray-400 lg:text-base text-sm font-sans font-semibold"
                   onClick={() => setIsPlayTrailer(true)}
                 >
                   <FaPlay />
@@ -214,17 +201,17 @@ const page = ({ params }: { params: { id: number } }) => {
                 </div>
               </div>
               {/*tagline */}
-              <p className="text-gray-400 italic text-sm mt-3">
+              <p className="text-gray-400 italic lg:text-sm text-xs mt-3">
                 {data?.tagline ? data.tagline : ""}
               </p>
               {/*overview */}
-              <div className=" mt-3 justify-end">
-                <h3 className=" text-xl font-semibold">Overview</h3>
-                <p className=" text-base mt-2">{data?.overview}</p>
+              <div className=" mt-3 justify-end w-full">
+                <h3 className="lg:text-xl text-base font-semibold">Overview</h3>
+                <p className="lg:text-base text-sm mt-2">{data?.overview}</p>
               </div>
             </div>
           </main>
-          <h2 className="text-xl mt-[30px] font-poppins">
+          <h2 className="lg:text-xl text-base px-[15px] lg:px-0 mt-[30px] font-poppins">
             Recommended After Watching {data?.name}
           </h2>
           <Recommended id={params.id} type="tv" />

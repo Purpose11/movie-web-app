@@ -59,12 +59,12 @@ const Trending = () => {
   };
 
   return (
-    <div className="flex items-center gap-[30px] h-fit w-full overflow-x-auto mt-[20px] trending">
+    <div className="flex items-center gap-[30px] h-fit w-full overflow-x-auto mt-[20px] px-[15px] lg:px-0 trending">
       {loading ? (
         <>
-          <Skeleton className="w-[450px] h-[220px] rounded-xl flex-shrink-0 flex flex-col justify-end bg-gray-700" />
-          <Skeleton className="w-[450px] h-[220px] rounded-xl flex-shrink-0 flex flex-col justify-end bg-gray-700" />
-          <Skeleton className="w-[450px] h-[220px] rounded-xl flex-shrink-0 flex flex-col justify-end bg-gray-700" />
+          <Skeleton className="lg:w-[450px] w-[300px] lg:h-[220px] h-[200px] rounded-xl flex-shrink-0 flex flex-col justify-end bg-gray-700" />
+          <Skeleton className="lg:w-[450px] w-[300px] lg:h-[220px] h-[200px] rounded-xl flex-shrink-0 flex flex-col justify-end bg-gray-700" />
+          <Skeleton className="lg:w-[450px] w-[300px] lg:h-[220px] h-[200px] rounded-xl flex-shrink-0 flex flex-col justify-end bg-gray-700" />
         </>
       ) : (
         data &&
@@ -78,7 +78,7 @@ const Trending = () => {
                   : `/tv/${trendData.id}`
               }`}
               key={trendData.id}
-              className="w-[450px] h-[220px] rounded-xl flex-shrink-0 flex flex-col justify-end relative"
+              className="lg:w-[450px] w-[300px] lg:h-[220px] h-[200px] rounded-xl flex-shrink-0 flex flex-col justify-end relative"
               style={{
                 backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url(https://image.tmdb.org/t/p/w500/${trendData.backdrop_path})`,
                 backgroundSize: "cover",
@@ -86,8 +86,8 @@ const Trending = () => {
                 backgroundRepeat: "no-repeat",
               }}
             >
-              <div className="w-[70%] h-[100px]  ml-[20px] mb-[7px]">
-                <div className="w-full h-[30px] flex gap-[8px] items-center text-gray-300 text-[12px]">
+              <div className="w-[70%] h-[100px] ml-[20px] mb-[7px]">
+                <div className="w-full h-[30px] flex gap-[8px] items-center text-gray-300  lg:text-[12px] text-[10px]">
                   <p>{movieYear}</p>
                   <div className="h-1 w-1 bg-gray-300 rounded-full"></div>
                   <p className="flex items-center gap-[5px]">
@@ -103,7 +103,7 @@ const Trending = () => {
                   <div className="h-1 w-1 bg-gray-300 rounded-full"></div>
                   <p>{trendData.adult === false ? "E" : "PG"}</p>
                 </div>
-                <h1 className="text-xl font-[600]">
+                <h1 className="lg:text-xl text-sm lg:font-[600] font-semibold">
                   {trendData.name ? trendData.name : trendData.title}
                 </h1>
               </div>

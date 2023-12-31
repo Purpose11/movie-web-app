@@ -35,21 +35,23 @@ export default function Home() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <h1 className="text-5xl font-BebasNeue pt-[20px] pl-[40px] text-[#E50914]">
+      <h1 className="lg:text-5xl text-3xl font-BebasNeue pt-[20px] pl-[40px] text-[#E50914]">
         TrailerFlix
       </h1>
-      <div className="w-[30%] mx-auto h-fit bg-black/70 px-[20px] py-[20px]">
-        <div className="w-[80%] mx-auto mt-8">
-          <h2 className="text-2xl">Sign In</h2>
+      <div className="lg:w-[30%] w-[80%] mx-auto h-fit bg-black/70 px-[20px] py-[20px] lg:mt-[20px] mt-[50px]">
+        <div className="w-[80%] mx-auto lg:mt-8 mt-5">
+          <h2 className="lg:text-2xl text-xl">Sign In</h2>
           <input
             type="email"
             value={email}
             placeholder="Email or phone number"
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full h-[50px] rounded-sm outline-none bg-[#333333] placeholder:text-[#6D6B6B] text-base p-4 text-white mt-5"
+            className="w-full h-[50px] rounded-sm outline-none bg-[#333333] placeholder:text-[#6D6B6B] lg:text-base text-sm p-4 text-white mt-5"
           />
           {isLoginBtnClicked && email === "" && (
-            <p className="text-xs text-red-500">Email is required</p>
+            <p className="lg:text-xs text-[10px] text-red-500">
+              Email is required
+            </p>
           )}
           <div className="relative">
             <input
@@ -57,27 +59,29 @@ export default function Home() {
               value={password}
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full h-[50px] rounded-sm outline-none bg-[#333333] placeholder:text-[#6D6B6B] text-base p-4 text-white mt-5 pr-[25px]"
+              className="w-full h-[50px] rounded-sm outline-none bg-[#333333] placeholder:text-[#6D6B6B] lg:text-base text-base p-4 text-white mt-5 pr-[25px]"
             />
 
             {showPassword ? (
               <AiOutlineEyeInvisible
-                className=" absolute lg:bottom-[15px] bottom-[20px] right-[7px] shrink-0 lg:w-[16px] lg:h-[16px] w-[14px] h-[14px] cursor-pointer text-[#6D6B6B]"
+                className=" absolute lg:bottom-[15px] bottom-[17px] right-[7px] shrink-0 lg:w-[16px] lg:h-[16px] w-[14px] h-[14px] cursor-pointer text-[#6D6B6B]"
                 onClick={() => setShowPassword(!showPassword)}
               />
             ) : (
               <AiOutlineEye
-                className=" absolute lg:bottom-[15px] bottom-[20px] right-[7px] shrink-0 lg:w-[16px] lg:h-[16px] w-[14px] h-[14px] cursor-pointer text-[#6D6B6B]"
+                className=" absolute lg:bottom-[15px] bottom-[17px] right-[7px] shrink-0 lg:w-[16px] lg:h-[16px] w-[14px] h-[14px] cursor-pointer text-[#6D6B6B]"
                 onClick={() => setShowPassword(!showPassword)}
               />
             )}
           </div>
           {isLoginBtnClicked && password === "" && (
-            <p className="text-xs text-red-500">Password is required</p>
+            <p className="lg:text-xs text-[10px] text-red-500">
+              Password is required
+            </p>
           )}
           <button
             type="submit"
-            className="flex items-center justify-center h-[50px] w-full rounded-sm bg-[#E50914] mt-9 font-semibold"
+            className="flex items-center justify-center h-[50px] w-full rounded-sm bg-[#E50914] mt-9 font-semibold lg:text-base text-sm "
             onClick={handleLogin}
           >
             {" "}
@@ -88,15 +92,15 @@ export default function Home() {
               <Checkbox id="terms" className="border-white" />
               <label
                 htmlFor="terms"
-                className="text-sm text-[#8E9689] leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                className="lg:text-sm text-xs text-[#8E9689] leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
               >
                 Remember me
               </label>
             </div>
-            <p className="text-sm text-[#8E9689]">Need help?</p>
+            <p className="lg:text-sm text-xs text-[#8E9689]">Need help?</p>
           </div>
           <div className="mt-8">
-            <p className="text-base text-[#656565]">
+            <p className="lg:text-base text-sm text-[#656565]">
               New to Trailerflix?{" "}
               <span className="cursor-pointer text-[#F5F3F2] font-semibold">
                 Sign up now

@@ -75,7 +75,7 @@ const Recommended = () => {
     return year;
   };
   return (
-    <div className="mt-[20px] w-full h-fit  grid grid-cols-[1fr,1fr,1fr,1fr] gap-[30px]  pr-[20px]">
+    <div className="mt-[20px] w-full h-fit grid lg:grid-cols-[1fr,1fr,1fr,1fr] grid-cols-[1fr,1fr] lg:gap-[30px] gap-[20px]  lg:pr-[20px] px-[15px] lg:px-0">
       {loading
         ? nSkeleton.map((Skele) => {
             return (
@@ -84,8 +84,8 @@ const Recommended = () => {
                 className="h-[250px] rounded-xl flex flex-col gap-[10px]"
               >
                 <Skeleton className="h-[70%] rounded-xl w-full bg-gray-700" />
-                <Skeleton className="h-[10%] w-[50%] bg-gray-700" />
-                <Skeleton className="h-[10%] w-[70%] bg-gray-700" />
+                <Skeleton className="lg:h-[7%] h-[5%] w-[50%] bg-gray-700" />
+                <Skeleton className="lg:h-[7%] h-[5%] w-[70%] bg-gray-700" />
               </div>
             );
           })
@@ -116,17 +116,17 @@ const Recommended = () => {
                 </div>
                 {/*movie details*/}
                 <div className="w-full h-[30%] flex flex-col gap-[5px]">
-                  <div className="w-full h-[20px] flex gap-[8px] items-center text-gray-300 text-[12px] pt-2">
+                  <div className="w-full h-[20px] flex gap-[8px] items-center text-gray-300 lg:text-[12px] text-[10px] pt-2">
                     <p>{movieYear}</p>
                     <div className="h-1 w-1 bg-gray-300 rounded-full"></div>
                     <p className="flex items-center gap-[5px]">
-                      <MdLocalMovies className="flex-shrink-0  text-[12px]" />
+                      <MdLocalMovies className="flex-shrink-0  lg:text-[12px] text-[10px]" />
                       <span>Movie</span>
                     </p>
                     <div className="h-1 w-1 bg-gray-300 rounded-full"></div>
                     <p>{movie.adult === false ? "E" : "PG"}</p>
                   </div>
-                  <p className="text-[14px]">{movie.title}</p>
+                  <p className="lg:text-[14px] text-[12px]">{movie.title}</p>
                 </div>
               </Link>
             );

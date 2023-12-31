@@ -18,7 +18,7 @@ export const sideBarData = [
         <Tooltip>
           <TooltipTrigger>
             {" "}
-            <BiSolidGridAlt className=" text-2xl" />
+            <BiSolidGridAlt className="lg:text-2xl text-xl" />
           </TooltipTrigger>
           <TooltipContent>
             <p>Home</p>
@@ -35,7 +35,7 @@ export const sideBarData = [
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger>
-            <PiTelevisionDuotone className=" text-2xl" />
+            <PiTelevisionDuotone className="lg:text-2xl text-xl" />
           </TooltipTrigger>
           <TooltipContent>
             <p>Tv Series</p>
@@ -52,7 +52,7 @@ export const sideBarData = [
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger>
-            <BsFillBookmarkFill className=" text-2xl" />
+            <BsFillBookmarkFill className="lg:text-2xl text-xl" />
           </TooltipTrigger>
           <TooltipContent>
             <p>Bookmarks</p>

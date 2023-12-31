@@ -32,9 +32,9 @@ const NavBar = () => {
   const pathname = usePathname();
   const router = useRouter();
   return (
-    <nav className="w-[60px] h-[95vh] bg-navBarColor ml-[30px] my-[15px] rounded-xl flex flex-col items-center py-4 fixed">
-      <MdMovie className="text-[#FE4749] text-2xl" />
-      <div className="mt-[50px] flex flex-col gap-5 flex-grow">
+    <nav className="lg:w-[60px] w-full lg:h-[95vh] h-[50px] bg-navBarColor lg:ml-[30px] lg:my-[15px] lg:rounded-xl flex lg:flex-col flex-row items-center lg:py-4 px-3 fixed justify-between lg:justify-normal z-10">
+      <MdMovie className="text-[#FE4749] lg:text-2xl text-xl" />
+      <div className="lg:mt-[50px] flex lg:flex-col flex-row gap-5 lg:flex-grow">
         {sideBarData.map((data) => {
           return (
             <Link
@@ -54,7 +54,7 @@ const NavBar = () => {
           <DropdownMenu>
             <DropdownMenuTrigger>
               {" "}
-              <div className="h-[24px] w-[24px] rounded-full  ring-white ring-1 ">
+              <div className="lg:h-[24px] h-[20px] lg:w-[24px] w-[20px] rounded-full  ring-white ring-1 ">
                 <img
                   src="./avatar.jpg"
                   className="w-full h-full object-cover rounded-full"

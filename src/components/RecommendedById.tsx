@@ -61,7 +61,7 @@ const Recommended = ({ id, type }: { id: number; type: string }) => {
   return (
     <>
       {loading ? (
-        <div className="w-[80%] h-fit mx-auto grid grid-cols-[1fr,1fr,1fr,1fr] gap-[30px] mt-[30px] ">
+        <div className="lg:w-[80%] w-[70%] h-fit mx-auto lg:grid lg:grid-cols-[1fr,1fr,1fr,1fr] flex flex-col lg:gap-[30px] gap-[20px] mt-[30px] ">
           {nSkeleton.map((skel) => {
             return (
               <div
@@ -69,7 +69,7 @@ const Recommended = ({ id, type }: { id: number; type: string }) => {
                 key={skel.id}
               >
                 <Skeleton className="w-full h-[90%] bg-gray-700" />
-                <Skeleton className="w-full h-[10%] bg-gray-700" />
+                <Skeleton className="w-full lg:h-[7%] h-[5%] bg-gray-700" />
               </div>
             );
           })}
@@ -77,7 +77,7 @@ const Recommended = ({ id, type }: { id: number; type: string }) => {
       ) : (
         <main>
           {data && data.length > 0 ? (
-            <div className="w-[80%] h-fit mx-auto grid grid-cols-[1fr,1fr,1fr,1fr] gap-[30px] mt-[30px] ">
+            <div className="lg:w-[80%] w-[60%] h-fit mx-auto lg:grid lg:grid-cols-[1fr,1fr,1fr,1fr] flex flex-col lg:gap-[30px] gap-[20px] mt-[30px]">
               {data.map((movie) => {
                 if (movie.poster_path || movie.backdrop_path) {
                   return (
@@ -99,7 +99,7 @@ const Recommended = ({ id, type }: { id: number; type: string }) => {
                         className="object-cover w-full h-[90%] rounded-xl"
                       />
                       <div className="w-full h-[10%]">
-                        <p className="text-[14px] font-poppins hover:text-gray-400">
+                        <p className="lg:text-[14px] text-[12px] font-poppins hover:text-gray-400">
                           {movie.title ? movie.title : movie.name}
                         </p>
                       </div>
@@ -111,7 +111,7 @@ const Recommended = ({ id, type }: { id: number; type: string }) => {
               })}
             </div>
           ) : (
-            <h2 className="text-xl font-poppins text-center mt-2 capitalize text-gray-400">
+            <h2 className="lg:text-xl text-base font-poppins text-center mt-2 capitalize text-gray-400">
               No recommendations available!
             </h2>
           )}
