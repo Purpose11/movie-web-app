@@ -6,6 +6,7 @@ import { PiTelevisionDuotone } from "react-icons/pi";
 import { Skeleton } from "@/components/ui/skeleton";
 import { BsFillBookmarkFill } from "react-icons/bs";
 import Link from "next/link";
+import Search from "@/components/Search";
 
 interface IRecommended {
   adult: boolean;
@@ -76,7 +77,8 @@ const page = () => {
     return year;
   };
   return (
-    <>
+    <div className="mt-[30px] font-poppins">
+      <Search type="tv" text="Tv Series" />
       <h1 className="text-2xl mt-[15px]">TV Series</h1>
       <div className="mt-[20px] w-full h-fit  grid grid-cols-[1fr,1fr,1fr,1fr] gap-[30px]  pr-[20px]">
         {loading
@@ -135,7 +137,7 @@ const page = () => {
               );
             })}
       </div>
-    </>
+    </div>
   );
 };
 

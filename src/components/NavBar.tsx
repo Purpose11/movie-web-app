@@ -62,7 +62,14 @@ const NavBar = () => {
               </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
-              <DropdownMenuLabel>John Doe</DropdownMenuLabel>
+              <DropdownMenuLabel>
+                <div>
+                  <h3>John Doe</h3>
+                  <p className="text-xs font-normal text-gray-600">
+                    test@test.com
+                  </p>
+                </div>
+              </DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem>Profile</DropdownMenuItem>
               <DropdownMenuItem>Billing</DropdownMenuItem>
