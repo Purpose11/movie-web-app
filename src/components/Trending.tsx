@@ -30,7 +30,7 @@ const Trending = () => {
     const fetchData = async () => {
       try {
         const res = await fetch(
-          "https://api.themoviedb.org/3/trending/all/day?api_key=dd90dd41203fce3517619be87037fc63",
+          `https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
           { cache: "no-store" }
         );
         const data = await res.json();
@@ -78,7 +78,7 @@ const Trending = () => {
                   : `/tv/${trendData.id}`
               }`}
               key={trendData.id}
-              className="lg:w-[450px] w-[300px] lg:h-[220px] h-[200px] rounded-xl flex-shrink-0 flex flex-col justify-end relative"
+              className="lg:w-[450px] w-[300px] lg:h-[220px] h-[200px] rounded-xl flex-shrink-0 flex flex-col justify-end"
               style={{
                 backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url(https://image.tmdb.org/t/p/w500/${trendData.backdrop_path})`,
                 backgroundSize: "cover",
@@ -106,14 +106,6 @@ const Trending = () => {
                 <h1 className="lg:text-xl text-sm lg:font-[600] font-semibold">
                   {trendData.name ? trendData.name : trendData.title}
                 </h1>
-              </div>
-              <div className="bg-black/40 rounded-full h-[30px] w-[30px] flex items-center justify-center absolute top-[10px] right-[10px]">
-                <MdBookmarkBorder
-                  className={`flex-shrink-0 h-[16px] w-[16px] cursor-pointer ${
-                    isBookmark ? "text-white" : " text-gray-500"
-                  }`}
-                  onClick={() => setIsBookmark(!isBookmark)}
-                />
               </div>
             </Link>
           );

@@ -39,7 +39,7 @@ const Recommended = ({ id, type }: { id: number; type: string }) => {
     const fetchData = async () => {
       try {
         const res = await fetch(
-          `https://api.themoviedb.org/3/${type}/${id}/recommendations?api_key=dd90dd41203fce3517619be87037fc63`,
+          `https://api.themoviedb.org/3/${type}/${id}/recommendations?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
           { cache: "no-store" }
         );
         if (res.ok) {

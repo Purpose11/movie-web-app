@@ -54,7 +54,7 @@ const Recommended = () => {
     const fetchData = async () => {
       try {
         const res = await fetch(
-          "https://api.themoviedb.org/3/discover/movie?api_key=dd90dd41203fce3517619be87037fc63",
+          `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
           { cache: "no-store" }
         );
         const data = await res.json();
@@ -96,7 +96,7 @@ const Recommended = () => {
               <Link
                 href={`movie/${movie.id}`}
                 key={movie.id}
-                className=" h-[250px] rounded-xl shrink-0 relative cursor-pointer"
+                className=" h-[250px] rounded-xl shrink-0  cursor-pointer"
               >
                 <img
                   src={`https://image.tmdb.org/t/p/w500/${
@@ -106,14 +106,6 @@ const Recommended = () => {
                   }`}
                   className="object-cover w-full h-[70%] rounded-xl"
                 />
-                <div className="bg-black/40 rounded-full h-[30px] w-[30px] flex items-center justify-center absolute top-[10px] right-[10px]">
-                  <MdBookmarkBorder
-                    className={`flex-shrink-0 h-[16px] w-[16px] cursor-pointer ${
-                      isBookmark ? "text-white" : " text-gray-500"
-                    }`}
-                    onClick={() => setIsBookmark(!isBookmark)}
-                  />
-                </div>
                 {/*movie details*/}
                 <div className="w-full h-[30%] flex flex-col gap-[5px]">
                   <div className="w-full h-[20px] flex gap-[8px] items-center text-gray-300 lg:text-[12px] text-[10px] pt-2">

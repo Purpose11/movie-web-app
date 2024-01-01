@@ -45,21 +45,4 @@ export const sideBarData = [
     ),
     path: "/series",
   },
-  {
-    id: 3,
-    name: "Bookmarks",
-    icon: (
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger>
-            <BsFillBookmarkFill className="lg:text-2xl text-xl" />
-          </TooltipTrigger>
-          <TooltipContent>
-            <p>Bookmarks</p>
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
-    ),
-    path: "/bookmarks",
-  },
 ];

@@ -32,7 +32,7 @@ const Search = ({ type, text }: { type: string; text: string }) => {
 
       try {
         const res = await fetch(
-          `https://api.themoviedb.org/3/search/${type}?query=${search}&api_key=dd90dd41203fce3517619be87037fc63`,
+          `https://api.themoviedb.org/3/search/${type}?query=${search}&api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
           { cache: "no-store" }
         );
         const responseData = await res.json();

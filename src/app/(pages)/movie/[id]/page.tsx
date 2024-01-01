@@ -37,7 +37,7 @@ const page = ({ params }: { params: { id: number } }) => {
     const fetchData = async () => {
       try {
         const res = await fetch(
-          `https://api.themoviedb.org/3/movie/${params.id}?api_key=dd90dd41203fce3517619be87037fc63&append_to_response=videos`,
+          `https://api.themoviedb.org/3/movie/${params.id}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&append_to_response=videos`,
           { cache: "no-store" }
         );
         if (res.ok) {
@@ -181,7 +181,7 @@ const page = ({ params }: { params: { id: number } }) => {
 
               {/*movie details */}
               <div className="w-full flex flex-col gap-[5px] lg:text-base text-sm mt-3 font-poppins">
-                <div className="w-full h-[20px] flex gap-[8px] items-center text-gray-300 lg:text-[12px] text-[10px] lg:pt-2">
+                <div className="w-full lg:h-[20px] h-fit flex gap-[8px] items-center text-gray-300 lg:text-[12px] text-[10px] lg:pt-2">
                   <p>{formatDate()}</p>
                   <div className="h-1 w-1 bg-gray-300 rounded-full"></div>
                   <div className="flex gap-[2px]">
